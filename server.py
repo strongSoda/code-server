@@ -92,6 +92,19 @@ def admin_add_candidate():
     return jsonify(new_candidate.candidate_id)
 
 
+@app.route('/admin/candidates/delete/')
+def admin_delete_candidate():
+    admins = ["a001"]
+    admin_code = request.args.get('admin_code')
+    if admin_code not in admins:
+        return -2
+    candidate_id = request.args.get('candidate_id')
+    user = CandidatesModel.query.get_or_404(candidate_id)
+    db.session.delete(user)
+    db.session.commit()
+    return jsonify(1)
+
+
 @app.route('/candidates/')
 def get_candidates():
     result = CandidatesModel.query.all()
