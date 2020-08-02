@@ -132,7 +132,7 @@ def vote():
     user = UsersModel.query.get(googleId)
     user.voted = True
     db.session.commit()
-    return jsonify(user.googleID)
+    return jsonify(user.googleId)
 
 
 @app.route('/users/voted/')
