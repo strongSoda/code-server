@@ -3,6 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from sqlalchemy import exc
 from flask_cors import CORS
+import os
 
 # configs
 app = Flask(__name__)
